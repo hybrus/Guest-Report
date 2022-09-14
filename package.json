@@ -1,6 +1,6 @@
 {
   "name": "guest-report",
-  "homepage ": "https://github.com/hybrus/Guest-Report",
+  "homepage ": "https://hybrus.github.io/Guest-Report/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
