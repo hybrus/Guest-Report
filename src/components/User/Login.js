@@ -46,25 +46,23 @@ const Login = ({ }) => {
                         </h2>
                     </div>
                     <Form onSubmit={handleSubmit(onSubmit)} method="POST">
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
+                        <Form.Group className="mb-3" controlId="formEmail">
+                            <Form.Label>Email</Form.Label>
                             <Form.Control
-                                name="email"
                                 type="email"
                                 autoComplete="email"
-                                ref={register({
+                                {...register("email", {
                                     pattern: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
                                 })}
                                 required
-                                className="" />
+                            />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="formPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                name="password"
-                                ref={register({ required: true })}
+                                {...register("password", { required: true })}
                                 autoComplete="current-password"
                                 required
                             />

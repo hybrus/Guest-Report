@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Login from './components/User/Login';
+import Login from './components/user/Login';
 import { PrivateRoute } from './helpers/PrivateRoute';
 import { Navigation } from './elements/Navigation';
-import Dashboard from './components/dashboard/Dashboard';
-import { Visitor } from './components/visitors/Visitor';
+import { Guest } from './components/guest/Guests';
+import { GuestForm } from './components/guest/GuestForm';
+import { GuestLogout } from './components/guest/GuestLogout';
 
 function App() {
 
@@ -14,8 +15,9 @@ function App() {
         <Navigation />
         <Switch>
           <Route exact component={Login} path="/login" />
-          <PrivateRoute exact component={Dashboard} path="/" />
-          <PrivateRoute exact component={Visitor} path="/visitors" />
+          <PrivateRoute exact component={Guest} path="/" />
+          <PrivateRoute exact component={GuestForm} path="/guest-in" />
+          <PrivateRoute exact component={GuestLogout} path="/guest-out" />
           <Redirect to="/" />
         </Switch>
       </Router>

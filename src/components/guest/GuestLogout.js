@@ -3,21 +3,18 @@ import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { getEmployeeLists } from './EmployeeSlice';
-import { outState } from './VisitorSlice';
+import { outState } from './GuestSlice';
 
-export const VisitorLogout = () => {
+export const GuestLogout = () => {
     const dispatch = useDispatch();
-    const { register, handleSubmit,reset , formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const [message, setMessage] = useState()
 
     useEffect(() => {
         const timer = setTimeout(() => setMessage(), 10000);
+        return () => clearTimeout(timer);
     }, [message]);
-
-    useEffect(() => {
-        dispatch(getEmployeeLists({}));
-    }, []);
 
     const onSubmit = (formData) => {
         setMessage(false)
@@ -27,20 +24,20 @@ export const VisitorLogout = () => {
     }
 
     return (
-        <Container className='d-flex align-items-center align-center h-100 w-100' style={{ placeContent: 'center' }}>
+        <Container className='d-flex align-items-center align-center w-100 pt-5' style={{ placeContent: 'center' }}>
             <Card style={{ width: '18rem' }}>
                 <Form onSubmit={handleSubmit(onSubmit)}>
 
                     {!!message &&
                         <Alert variant="success">
-                            Visitor Logged Out!
+                            Guest Logged Out!
                         </Alert>
                     }
                     <Card.Body>
-                        <Card.Title>Visitor Logout</Card.Title>
+                        <Card.Title>Guest Logout</Card.Title>
                         <Form.Group className="mb-3" >
-                            <Form.Label>Visitor ID</Form.Label> {!!errors?.id && <span className='text-danger'>* required</span>}
-                            <Form.Control type="text" placeholder="visitor ID" name="id" ref={register({ required: true })} />
+                            <Form.Label>Guest ID</Form.Label> {!!errors?.id && <span className='text-danger'>* required</span>}
+                            <Form.Control type="text" placeholder="guest ID" {...register("id", { required: true })} />
                         </Form.Group>
 
                         <Button variant="primary" type="submit">Logout</Button>
