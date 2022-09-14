@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # Guest Report
 
